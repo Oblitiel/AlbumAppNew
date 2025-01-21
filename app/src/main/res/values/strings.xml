@@ -1,0 +1,93 @@
+<resources>
+    <string name="app_name">Album A Day</string>
+    <string name="songCount"> %s canciones </string>
+    <string name="duration">Duración : %s min  </string>
+    <string name="expand_button_desc">Boton para mostrar más o menos</string>
+
+    <!--Albumes 31-->
+    <string name="soad">System of a Down</string>
+
+
+    <string name="hypnotize">Hypnotize</string>
+    <string name="toxicity">Toxicity</string>
+    <string name="steal_this_album">Steal This Album!</string>
+
+    <!-- ..................................................-->
+
+    <string name="hip">Human Instrumentality Proyect</string>
+
+    <string name="lcl_sea">LCL SEA</string>
+
+    <!-- ..................................................-->
+
+    <string name="robe">Robe</string>
+
+    <string name="lo_que_aletea">Lo Que Aletea En Nuestras Cabezas</string>
+
+    <!-- ..................................................-->
+
+    <string name="radiohead">Radiohead</string>
+
+    <string name="kid_a_mnesia">KID A MNESIA</string>
+    <string name="moon_shaped_pool">A Moon Shaped Pool</string>
+    <string name="the_king_of_limbs">The King Of Limbs</string>
+    <string name="amnesiac">Amnesiac</string>
+    <string name="kid_a">Kid A</string>
+
+    <!-- ..................................................-->
+
+    <string name="slowdive">Slowdive</string>
+
+    <string name="everything_is_alive">Everything is Alive</string>
+    <string name="pygmalion">Pygmalion</string>
+    <string name="souvlaki">Souvlaki</string>
+    <string name="just_for_a_day">Just For A Day</string>
+
+    <!-- ..................................................-->
+
+    <string name="nirvana">Nirvana</string>
+
+    <string name="in_utero">In Utero</string>
+    <string name="nevermind">Nevermind</string>
+    <string name="bleach">Bleach</string>
+
+    <!-- ..................................................-->
+
+    <string name="extremoduro">Extremoduro</string>
+
+    <string name="ley_innata">La ley innata</string>
+    <string name="yo_minoria_absoluta">Yo, Minoría Absoluta</string>
+    <string name="agila">Agila</string>
+    <string name="rock_transgresivo">Rock Transgresivo</string>
+    <string name="deltoya">Deltoya</string>
+
+    <!-- ..................................................-->
+
+    <string name="type_o_negative">Thype O negative</string>
+
+    <string name="bloody_kisses">Bloody kisses</string>
+    <string name="october_rust">October rust</string>
+    <string name="life_is_killing_me">Life is killing me</string>
+
+    <!-- ..................................................-->
+    
+    <string name="kekth_arakh">Këkth Aräkh</string>
+
+    <string name="pale_swordsman">Pale Swordsman</string>
+    <string name="night_n_love">Night and love</string>
+
+    <!-- ..................................................-->
+
+    <string name="the_cure">The Cure</string>
+
+    <string name="seventeen_seconds">Seventeen Seconds</string>
+    <string name="songs_of_a_lost_world">Songs of a lost world</string>
+
+    <!-- ..................................................-->
+
+    <string name="psychonaut4">Psychonaut 4</string>
+    
+    <string name="dipsomania">Dipsomania</string>
+    <string name="neurasthenia">Neurasthenia</string>
+    <string name="scrapes_from_the_past">Scrapes from the past</string>
+</resources>
