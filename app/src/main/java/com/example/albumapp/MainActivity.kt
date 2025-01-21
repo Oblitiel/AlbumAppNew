@@ -23,6 +23,8 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.ExpandLess
+import androidx.compose.material.icons.filled.ExpandMore
 import androidx.compose.material3.Card
 import androidx.compose.material3.CenterAlignedTopAppBar
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -80,7 +82,8 @@ fun AlbumApp() {
             LazyRow(
                 modifier = Modifier
                     .padding(innerPadding)
-                    .fillMaxWidth(),
+                    .fillMaxSize(),
+
                 verticalAlignment = Alignment.CenterVertically
             ) {
                 items(albums) {
@@ -109,8 +112,6 @@ fun AlbumItem(
         targetValue = if (expanded) dimensionResource(R.dimen.image_expanded)
         else dimensionResource(R.dimen.image_size)
     )
-
-    // TODO: Hacer mas grande la imgen y que cambie de color el card / Probar un layour diferente??
     Card(
         modifier = modifier
     ) {
@@ -158,7 +159,6 @@ fun AlbumItem(
 fun AlbumTopBar(modifier: Modifier = Modifier){
     CenterAlignedTopAppBar(
         modifier = modifier,
-        // Colores de la topbar, cambiar la variable o el valor de la variable como veais
         colors = topAppBarColors(
             containerColor = MaterialTheme.colorScheme.primaryContainer,
             titleContentColor = MaterialTheme.colorScheme.primary,
@@ -212,7 +212,7 @@ fun AlbumInformationExpanded(
 ){
     Column (
         modifier = modifier
-            .fillMaxSize()
+            .fillMaxWidth()
             .padding(dimensionResource(R.dimen.padding_small)),
         horizontalAlignment = Alignment.CenterHorizontally
     ){
@@ -235,11 +235,11 @@ fun ExpandButton(
         onClick = onClick,
         modifier = modifier
     ) {
-//        Icon(
-//            imageVector = if (expanded) Icons.Filled.ExpandLess else Icons.Filled.ExpandMore,
-//            contentDescription = stringResource(R.string.expand_button_desc),
-//            tint = MaterialTheme.colorScheme.secondary
-//        )
+        Icon(
+            imageVector = if (expanded) Icons.Filled.ExpandLess else Icons.Filled.ExpandMore,
+            contentDescription = stringResource(R.string.expand_button_desc),
+            tint = MaterialTheme.colorScheme.secondary
+        )
     }
 }
 @Preview(showBackground = true)
