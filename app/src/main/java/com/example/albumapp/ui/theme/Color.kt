@@ -1,3 +1,4 @@
+// Por Gabriel Gonzalez, Nerea Ramirez, Marco Galan y Diego Pastor
 package com.example.albumapp.ui.theme
 import androidx.compose.ui.graphics.Color
 
@@ -111,16 +112,16 @@ val surfaceContainerHighestLightHighContrast = Color(0xFFCCC5C7)
 
 val primaryDark = Color(0xFFFFFCFF)
 val onPrimaryDark = Color(0xFF442642)
-val primaryContainerDark = Color(0xFFFFD3F8)
-val onPrimaryContainerDark = Color(0xFF7A5877)
+val primaryContainerDark = Color(0xFF7A5877)
+val onPrimaryContainerDark = Color(0xFFFFD3F8)
 val secondaryDark = Color(0xFFF4AEFF)
 val onSecondaryDark = Color(0xFF530966)
-val secondaryContainerDark = Color(0xFFD789E6)
-val onSecondaryContainerDark = Color(0xFF601A72)
+val secondaryContainerDark = Color(0xFF601A72)
+val onSecondaryContainerDark = Color(0xFFD789E6)
 val tertiaryDark = Color(0xFFF9D4FF)
 val onTertiaryDark = Color(0xFF4C1760)
-val tertiaryContainerDark = Color(0xFFEDADFF)
-val onTertiaryContainerDark = Color(0xFF703A83)
+val tertiaryContainerDark = Color(0xFF703A83)
+val onTertiaryContainerDark = Color(0xFFEDADFF)
 val errorDark = Color(0xFFFFB4AB)
 val onErrorDark = Color(0xFF690005)
 val errorContainerDark = Color(0xFF93000A)

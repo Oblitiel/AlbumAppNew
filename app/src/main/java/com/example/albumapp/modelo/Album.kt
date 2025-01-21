@@ -1,3 +1,4 @@
+// Por Gabriel Gonzalez, Nerea Ramirez, Marco Galan y Diego Pastor
 package com.example.albumapp.modelo
 
 import androidx.annotation.DrawableRes

@@ -1,3 +1,4 @@
+// Por Gabriel Gonzalez, Nerea Ramirez, Marco Galan y Diego Pastor
 package com.example.albumapp
 
 import android.os.Bundle
@@ -43,23 +44,24 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.sp
 import com.example.albumapp.modelo.Album
 import com.example.albumapp.modelo.albums
 import com.example.albumapp.ui.theme.AppTheme
 
+
+// Por Gabriel Gonzalez, Nerea Ramirez, Marco Galan y Diego Pastor
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
-            AppTheme {
+            AppTheme  {
                 Surface {
                     AlbumApp()
                 }
@@ -78,7 +80,9 @@ fun AlbumApp() {
 
     ) { innerPadding ->
 
-        Column {
+        Column (
+            modifier = Modifier.background(MaterialTheme.colorScheme.primaryContainer)
+        ){
             LazyRow(
                 modifier = Modifier
                     .padding(innerPadding)
@@ -105,12 +109,16 @@ fun AlbumItem(
 ){
     var expanded by remember { mutableStateOf(false) }
     val color by animateColorAsState(
-        targetValue = if (expanded) MaterialTheme.colorScheme.primaryContainer
-        else MaterialTheme.colorScheme.secondaryContainer
+        targetValue = if (expanded) MaterialTheme.colorScheme.onTertiaryContainer
+        else MaterialTheme.colorScheme.tertiaryContainer
+    )
+    val textColor by animateColorAsState(
+        targetValue = if (expanded) MaterialTheme.colorScheme.tertiaryContainer
+        else MaterialTheme.colorScheme.onTertiaryContainer
     )
     val size by animateDpAsState(
-        targetValue = if (expanded) dimensionResource(R.dimen.image_expanded)
-        else dimensionResource(R.dimen.image_size)
+        targetValue = if (expanded) dimensionResource(R.dimen.card_expanded)
+        else dimensionResource(R.dimen.card_size)
     )
     Card(
         modifier = modifier
@@ -140,7 +148,7 @@ fun AlbumItem(
                     .fillMaxWidth()
                     .padding(dimensionResource(R.dimen.padding_small))
             ) {
-                AlbumInformation(album.name, album.group)
+                AlbumInformation(album.name, album.group, textColor)
                 Spacer(modifier = Modifier.weight(1f))
                 ExpandButton(
                     expanded = expanded,
@@ -148,7 +156,7 @@ fun AlbumItem(
                 )
             }
             if (expanded){
-                AlbumInformationExpanded(album.songCount, album.duration)
+                AlbumInformationExpanded(album.songCount, album.duration, textColor)
             }
         }
     }
@@ -160,8 +168,8 @@ fun AlbumTopBar(modifier: Modifier = Modifier){
     CenterAlignedTopAppBar(
         modifier = modifier,
         colors = topAppBarColors(
-            containerColor = MaterialTheme.colorScheme.primaryContainer,
-            titleContentColor = MaterialTheme.colorScheme.primary,
+            containerColor = MaterialTheme.colorScheme.secondaryContainer,
+            titleContentColor = Color.White,
         ),
         title = {
             Row (
@@ -171,12 +179,12 @@ fun AlbumTopBar(modifier: Modifier = Modifier){
                     modifier = Modifier
                         .size(dimensionResource(R.dimen.logo_size))
                         .padding(dimensionResource(R.dimen.padding_small)),
-                    // TODO: Por alguna razon la previes no se corre si ponemos aqui el icono cuando pueda investigo y si no png y a tomar por culo, dejad el place holder
-                    painter = painterResource(R.drawable.place_holder),
+                    painter = painterResource(R.drawable.light_icon),
                     contentDescription = null,
                 )
                 Text(
-                    text = stringResource(R.string.app_name)
+                    text = stringResource(R.string.app_name),
+                    style = MaterialTheme.typography.displayLarge
                 )
             }
         }
@@ -185,21 +193,24 @@ fun AlbumTopBar(modifier: Modifier = Modifier){
 
 @Composable
 fun AlbumInformation(
-    @StringRes albumname: Int,
-    @StringRes albumgroup: Int,
+    @StringRes albumName: Int,
+    @StringRes albumGroup: Int,
+    textColor : Color,
     modifier: Modifier = Modifier
 ){
     Column(
         modifier = modifier
     ){
         Text(
-            text = stringResource(albumname),
-            fontWeight = FontWeight.SemiBold,
-            fontSize = 20.sp,
-            modifier = Modifier.padding(top = dimensionResource(id = R.dimen.padding_small))
+            text = stringResource(albumName),
+            modifier = Modifier.padding(top = dimensionResource(id = R.dimen.padding_small)),
+            style = MaterialTheme.typography.displayMedium,
+            color = textColor
         )
         Text(
-            text = stringResource(albumgroup)
+            text = stringResource(albumGroup),
+            color = textColor,
+            style = MaterialTheme.typography.labelMedium
         )
     }
 } 
@@ -208,6 +219,7 @@ fun AlbumInformation(
 fun AlbumInformationExpanded(
      @StringRes songCount : Int,
      @StringRes duration: Int,
+     textColor : Color,
      modifier: Modifier = Modifier
 ){
     Column (
@@ -217,10 +229,14 @@ fun AlbumInformationExpanded(
         horizontalAlignment = Alignment.CenterHorizontally
     ){
         Text(
-            text = stringResource(R.string.songCount, songCount)
+            text = stringResource(R.string.songCount, songCount),
+            color = textColor,
+            style = MaterialTheme.typography.labelSmall
         )
         Text(
-            text = stringResource(R.string.duration, duration)
+            text = stringResource(R.string.duration, duration),
+            color = textColor,
+            style = MaterialTheme.typography.labelSmall
         )
     }
 }
@@ -238,14 +254,8 @@ fun ExpandButton(
         Icon(
             imageVector = if (expanded) Icons.Filled.ExpandLess else Icons.Filled.ExpandMore,
             contentDescription = stringResource(R.string.expand_button_desc),
-            tint = MaterialTheme.colorScheme.secondary
+            tint = if (!expanded) MaterialTheme.colorScheme.onTertiaryContainer
+            else MaterialTheme.colorScheme.tertiaryContainer
         )
-    }
-}
-@Preview(showBackground = true)
-@Composable
-fun AlbumAppPreview() {
-    AppTheme  {
-        AlbumApp()
     }
 }

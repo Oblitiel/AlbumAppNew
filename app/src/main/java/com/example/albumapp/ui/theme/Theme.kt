@@ -1,3 +1,4 @@
+// Por Gabriel Gonzalez, Nerea Ramirez, Marco Galan y Diego Pastor
 package com.example.albumapp.ui.theme
 import android.os.Build
 import androidx.compose.foundation.isSystemInDarkTheme
@@ -265,9 +266,10 @@ fun AppTheme(
   }
 
   MaterialTheme(
-    colorScheme = colorScheme,
-    shapes = Shapes,
-    content = content
+      colorScheme = colorScheme,
+      shapes = Shapes,
+      typography = Typography,
+      content = content
   )
 }
 
