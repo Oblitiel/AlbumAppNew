@@ -264,6 +264,7 @@ fun AppTheme(
       darkTheme -> darkScheme
       else -> lightScheme
   }
+    isDarkTheme = darkTheme
 
   MaterialTheme(
       colorScheme = colorScheme,
@@ -273,3 +274,4 @@ fun AppTheme(
   )
 }
 
+var isDarkTheme : Boolean = false

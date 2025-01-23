@@ -49,9 +49,11 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.tooling.preview.Preview
 import com.example.albumapp.modelo.Album
 import com.example.albumapp.modelo.albums
 import com.example.albumapp.ui.theme.AppTheme
+import com.example.albumapp.ui.theme.isDarkTheme
 
 
 // Por Gabriel Gonzalez, Nerea Ramirez, Marco Galan y Diego Pastor
@@ -78,26 +80,31 @@ fun AlbumApp() {
         }
 
     ) { innerPadding ->
+        // BackGround
+        Image(
+            painter = if (isDarkTheme){
+                painterResource(R.drawable.dark_bg)
+            }else{
+                painterResource(R.drawable.light_bg)
+            },
+            contentDescription = null,
+            modifier = Modifier.fillMaxSize(),
+            contentScale = ContentScale.Crop
+        )
+        LazyRow(
+            modifier = Modifier
+                .padding(innerPadding)
+                .fillMaxSize(),
 
-        Column (
-            modifier = Modifier.background(MaterialTheme.colorScheme.primaryContainer)
-        ){
-            LazyRow(
-                modifier = Modifier
-                    .padding(innerPadding)
-                    .fillMaxSize(),
-
-                verticalAlignment = Alignment.CenterVertically
-            ) {
-                items(albums) {
-                    AlbumItem(
-                        album = it,
-                        modifier = Modifier.padding(dimensionResource(R.dimen.padding_small)),
-                    )
-                }
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            items(albums) {
+                AlbumItem(
+                    album = it,
+                    modifier = Modifier.padding(dimensionResource(R.dimen.padding_small)),
+                )
             }
         }
-
     }
 }
 
@@ -256,5 +263,20 @@ fun ExpandButton(
             tint = if (!expanded) MaterialTheme.colorScheme.onTertiaryContainer
             else MaterialTheme.colorScheme.tertiaryContainer
         )
+    }
+}
+
+@Preview (showBackground = true)
+@Composable
+fun LightPreview(){
+    AppTheme {
+        AlbumApp()
+    }
+}
+@Preview (showBackground = true)
+@Composable
+fun DarkPreview(){
+    AppTheme (darkTheme = true) {
+        AlbumApp()
     }
 }
